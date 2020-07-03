@@ -91,7 +91,6 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public String modifyUser(User user) {
-        //Integer -> int
         Integer num = iUserMapper.modifyUser(user);
         if (num != 0){
             //修改成功后可能会影响allUser和Login_list中缓存的数据，所以需要更新

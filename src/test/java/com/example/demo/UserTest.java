@@ -85,8 +85,8 @@ public class UserTest {
             System.err.println("找不到对应用户的数据");
             return;
         }
-
-        System.out.println(iUserService.delUser(user));
+        iUserService.delUser(user);
+//        System.out.println(iUserService.delUser(user));
 
     }
 

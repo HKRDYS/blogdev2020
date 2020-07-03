@@ -40,6 +40,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public List<User> findAllUser() {
+
         Object obj = redisTemplate.opsForValue().get("allUser");
         if (obj != null){
             return (List<User>) obj;
@@ -65,9 +66,10 @@ public class UserServiceImpl implements IUserService {
             if (obj != null){
                 List<User> list = (List<User>) obj;
                 //使用以下for增强性循环做迭代，并且remove掉list中元素时会出异常
-                for (User u:list){
+                for (User u : list){
                     if (u.getLoginName().equals(user.getLoginName())){
                         list.remove(u);
+                        return  delUser(user);
                     }
                 }
                 //改用lambda表达式来做

@@ -38,7 +38,7 @@
     
     <insert id="addUser" parameterType="User" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
         insert into t_user(name,login_name,login_pass,email,valid,img,register_time) values (#{name},#{loginName},#{loginPass},
-        #{emali},#{valid},#{img},#{registerTime})
+        #{email},#{valid},#{img},#{registerTime})
     </insert>
 
 </mapper>

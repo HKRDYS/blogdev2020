@@ -17,7 +17,6 @@ public class User {
     private boolean valid;//有效性 0无效，1有效
     private String img;//头像
 
-
     public Integer getId() {
         return id;
     }
@@ -96,3 +95,6 @@ public class User {
                 '}';
     }
 }
+
+
+

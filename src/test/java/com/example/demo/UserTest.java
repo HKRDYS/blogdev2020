@@ -20,16 +20,18 @@ import java.util.Date;
 public class UserTest {
     @Autowired
     private IUserMapper iUserMapper;
+    @Autowired
     private IUserService iUserService;
 
     @Test
     void testAddUser(){
         User user = new User();
-        user.setEmail("3390452267@qq.com");
+        user.setName("Test");
         user.setLoginName("HKRDYS");
         user.setLoginPass("dev2020");
-        user.setName("Test");
+        user.setEmail("3390452267@qq.com");
         user.setRegisterTime(new Date());
+        user.setValid(true);
         String msg = iUserService.addUser(user);
         System.out.println(msg);
     }

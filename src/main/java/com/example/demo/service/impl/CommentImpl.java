@@ -1,4 +1,4 @@
 package com.example.demo.service.impl;
 
-public interface IStatisticService {
+public class CommentImpl {
 }

@@ -56,7 +56,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public String delUser(User user) {
         //Integer -> int
-        int num = iUserMapper.delUser(user);
+        Integer num = iUserMapper.delUser(user);
         if (num != 0){
             //成功删除一个用户后，可能影响了allUser中的数据，也可能影响了LoginName_List中的数据
             //所以还要处理这两个缓存
@@ -90,7 +90,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public String modifyUser(User user) {
         //Integer -> int
-        int num = iUserMapper.modifyUser(user);
+        Integer num = iUserMapper.modifyUser(user);
         if (num != 0){
             //修改成功后可能会影响allUser和Login_list中缓存的数据，所以需要更新
             //更新allUser缓存

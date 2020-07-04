@@ -12,6 +12,8 @@ import java.util.List;
 @Mapper
 @Repository
 public interface IRoleMapper {
-    @Select("select role from t_role where id=(select role_id from t_user_role where user_id = #{id} )")
+    @Select("select role from t_role where id=(select role_id from t_user_role where user_id=(select t_user.id from t_user where name = #{username}))")
     public List<Role> findRoleByLoginUser(User user);//根据用户名查角色
+
+
 }

@@ -27,12 +27,11 @@ public class RoleTest {
         user.setId(1);
         List<Role> roleList = iRoleService.findRoleByLoginUser(user);
         if (roleList == null){
-            System.err.println("找不到相关数据");
+            System.err.println("\033 找不到相关数据");
             return;
         }
-        System.err.println(roleList);
         for (Role r : roleList){
-            System.out.println(r.toString());
+            System.out.println("\036 数据值:"+r.toString());
         }
     }
 }

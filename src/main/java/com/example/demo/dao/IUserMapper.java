@@ -47,4 +47,12 @@ public interface IUserMapper {
     public int modifyUser(User user);//修改指定用户，修改成功返回记录数，修改失败返回0
     public List<User> findUser(User user);//多条件查找用户
     public int addUser(User user);//添加用户，注册用户
+
+    @Select("select id from t_user where login_name = #{loginName}")
+    public int findIdByLoginName(User user); //根据用户登录名查找用户ID
+
+    @Select("select login_name from t_user where id = #{id}")
+    public String findLoginNameById(User user);
+
+
 }

@@ -25,6 +25,7 @@ public class RoleServiceImpl implements IRoleService {
         if (obj != null){
             return (List<Role>) obj;
         }else {
+            //There is a Big BUG
             List<Role> list = iRoleMapper.findRoleByLoginUser(user);
             if (list != null && list.size() > 0){
                 //加入缓存

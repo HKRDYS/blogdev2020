@@ -19,7 +19,7 @@ import java.util.List;
 @SpringBootTest
 public class RoleTest {
     @Autowired
-    private IRoleService iRoleService;
+    IRoleService iRoleService;
 
     @Test
     void testFindRole(){

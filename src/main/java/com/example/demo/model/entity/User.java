@@ -1,5 +1,6 @@
 package com.example.demo.model.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /*
@@ -7,7 +8,7 @@ import java.util.Date;
 *
 *
 * */
-public class User {
+public class User implements Serializable {
     private Integer id;//主键
     private String name;//用户名
     private String loginName;//登录名

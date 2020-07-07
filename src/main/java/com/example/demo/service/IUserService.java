@@ -8,10 +8,10 @@ import java.util.List;
 * User服务器接口
 * */
 public interface IUserService {
-    public User findByLoginName(String loginName);
-    public List<User> findAllUser();
-    public String delUser(User user);
-    public String modifyUser(User user);
-    public List<User> findUser(User user);
-    public String addUser(User user);
+    User findByLoginName(String loginName);
+    List<User> findAllUser();
+    String delUser(User user);
+    String modifyUser(User user);
+    List<User> findUser(User user);
+    String addUser(User user);
 }

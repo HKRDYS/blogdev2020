@@ -1,5 +1,7 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.dao.IRoleMapper;
+import com.example.demo.dao.IUserMapper;
 import com.example.demo.model.entity.Role;
 import com.example.demo.model.entity.User;
 import com.example.demo.service.IRoleService;
@@ -10,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,16 +20,17 @@ import java.util.stream.Collectors;
 
 //UserDetailsService接口实现
 @Service
+@Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
-    private IUserService iUserService;//注入用户服务接口
+    private IUserMapper iUserMapper;//注入用户服务接口
     @Autowired
-    private IRoleService iRoleService;//注入角色服务接口
+    private IRoleMapper iRoleMapper;//注入角色服务接口
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        User user = iUserService.findByLoginName(s);//根据登录名查用户信息
+        User user = iUserMapper.findByLoginName(s);//根据登录名查用户信息
         if (user != null){
-            List<Role> list = iRoleService.findRoleByLoginUser(user);//根据用户查角色
+            List<Role> list = iRoleMapper.findRoleByLoginUser(user);//根据用户查角色
             StringBuilder roles = new StringBuilder();//用于保存角色名
             for (Role r: list){
                 roles.append(r.getRole());

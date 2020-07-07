@@ -7,6 +7,7 @@ import com.example.demo.model.entity.User;
 import com.example.demo.service.IArticleService;
 import com.example.demo.service.ITypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.Date;
 import java.util.List;
+import com.example.demo.service.impl.ArticleServiceImpl;
 
 @Controller
 public class ArticleController {

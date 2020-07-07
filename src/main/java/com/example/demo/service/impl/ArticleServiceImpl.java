@@ -4,6 +4,7 @@ import com.example.demo.dao.IArticleMapper;
 import com.example.demo.model.entity.Article;
 import com.example.demo.service.IArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,7 @@ import java.util.List;
 /*
 * 博文服务层接口
 * */
+@Primary
 @Transactional
 @Service
 public class ArticleServiceImpl implements IArticleService {

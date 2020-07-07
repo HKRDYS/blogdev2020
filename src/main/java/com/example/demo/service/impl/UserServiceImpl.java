@@ -4,6 +4,7 @@ import com.example.demo.dao.IUserMapper;
 import com.example.demo.model.entity.User;
 import com.example.demo.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 * User服务接口实现类
 * */
 //添加事务控制
+@Primary
 @Transactional
 @Service
 public class UserServiceImpl implements IUserService {

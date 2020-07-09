@@ -16,7 +16,7 @@ import java.util.List;
 /*
 * 博文服务层接口
 * */
-@Primary
+
 @Transactional
 @Service
 public class ArticleServiceImpl implements IArticleService {

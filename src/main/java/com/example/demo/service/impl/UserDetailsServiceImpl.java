@@ -21,9 +21,9 @@ import java.util.stream.Collectors;
 @Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
-    private IUserService iUserService;//注入用户服务接口
+    private UserServiceImpl iUserService;//注入用户服务接口
     @Autowired
-    private IRoleService iRoleService;//注入角色服务接口
+    private RoleServiceImpl iRoleService;//注入角色服务接口
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user = iUserService.findByLoginName(s);//根据登录名查用户信息

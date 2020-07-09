@@ -82,6 +82,15 @@ public class User implements Serializable {
         this.img = img;
     }
 
+    public String getUsername(){
+        return name;
+    }
+
+    public void setUsername(){
+        this.name = name;
+    }
+
+
     @Override
     public String toString() {
         return "User{" +

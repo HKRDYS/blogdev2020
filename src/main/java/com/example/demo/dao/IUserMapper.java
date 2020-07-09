@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.List;
 * 3.缺点：不能使用动态sql
 *
 * */
+@Primary
 @Mapper
 @Repository
 public interface IUserMapper {

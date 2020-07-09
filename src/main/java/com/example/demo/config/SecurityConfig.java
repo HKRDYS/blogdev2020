@@ -3,6 +3,7 @@ package com.example.demo.config;
 import com.example.demo.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -12,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 //安全配置文件
 //Web安全配置
+@Primary
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig  extends WebSecurityConfigurerAdapter {
@@ -29,9 +31,15 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 //admin下的内容仅ADMIN角色的用户可访问
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated();
-        http.formLogin().loginPage("/toLogin")
+//        http.formLogin().loginPage("/toLogin")
+//                .usernameParameter("username")
+//                .passwordParameter("password")
+
+        http.formLogin()
+                .loginPage("/toLogin")
                 .usernameParameter("username")
                 .passwordParameter("password")
+
                 .loginProcessingUrl("/myLogin")
                 .defaultSuccessUrl("/myLogin")
                 .failureUrl(("/toLogin?error"));

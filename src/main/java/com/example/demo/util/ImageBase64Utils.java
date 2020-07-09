@@ -87,7 +87,7 @@ public class ImageBase64Utils {
         //本地路径测试
         //System.out.println(encodeImgageToBase64(new File("C:\\Windows\\Web\\Wallpaper\\Theme2\\img10.jpg"),"jpg"));
         //测试base654编码转换成图片文件
-        StringBuffer base64=new StringBuffer();
+        StringBuilder base64=new StringBuilder();
         base64.append("/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a\n" +
                 "HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy\n" +
                 "MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCASwB4ADASIA\n" +
@@ -132,7 +132,8 @@ public class ImageBase64Utils {
                 "W5yWJAacKYKeDQFhaKKKAClFNpQaAHAilzxTaMmmSKTRmmk0mTQIeDS5pgNLmgQ7NJSZozTAWgGk\n" +
                 "zRmkOw4GlJpoNBNBVh2aM03NGSaRSHZpQRTM0oNAEgNLTAacDSKsLnigUZoBoCw+ikBpaBiGmmnG\n" +
                 "mmgBtGaSikAEUw080wmgBDRS8U3NIAoJpD60E0DDNGaTNJk1JSFzSZpM0E0AGaM0maM0FC5ozTc0\n" +
-                "ZqShSajY04momNIaQhNRk0rGomNSWkBNNJpCeaQmkVYCaM00kmkzQA8mmk0maDigQhNMNONNNACG\n" +
+                "ZqShSajY04momNIaQhNRk0rGomNSWkBNNJpCeaQmkVYCaM00kmkzQA8mmk0maDigQhNMNONNNACG\n");
+                base64.append(
                 "m96U0maBh2pKUmmk0AxDRSGigkWigUtUSFLmkpaYgooooCwmaKKKQ7C0ZpuaM0XCw6ikzS5pk2Ci\n" +
                 "jNJTuKwtLTc0ZouFhwNGaTNGaLhYeKUUwGng0XFYcKdTc0ZphYWikopBYM0maDRSKsOzRmmijNA7\n" +
                 "DgaXmmZpQaAsKaQmkJpCaRVhaKTNITQFhCaQmgmmk0XFYCaQmkNITSHYQmmmlJppNA+UM0hNITSE\n" +
@@ -399,7 +400,8 @@ public class ImageBase64Utils {
                 "OaKQ0UDA0lLRTEJRS0lABSUUh6YoACKSlNIaYBRSUUwFpQaSloEOBpQaYDTgaYEmaUGowacDTESA\n" +
                 "0oNRg04GgD2EUj/dp4FMk6YpnOypIarE81YlPNV2oJHqaUniowacxwKYhGJxVZ/WpyagfmgkhJpp\n" +
                 "NKxphNO4WFzTgajBpQadwsPzRmm5pCaQWH5pMimk0maVwH5pM0zPPNITSGOJpMmkJpCe1K4Ds0hN\n" +
-                "NzRmlcY4mkzSZpOaBpC5pc03NGaRokOzQTTc0mallpCk0wmgmmE0igJphNBNMJqSh278KXdUOaUG\n" +
+                "NzRmlcY4mkzSZpOaBpC5pc03NGaRokOzQTTc0mallpCk0wmgmmE0igJphNBNMJqSh278KXdUOaUG\n");
+                base64.append(
                 "kMlzRmowaXNMQ8mjNMJ96M0APzSg1HmgGkMlBpQajBpwNSA+nUwGjNFx2H5paYDSg80rhYcKcMUw\n" +
                 "GnA0BYeKUGmilzQMcDS5poNGaAsPzRmmZozQFh+aM0zNOzQA7OKM03NGaQ7D80ZqPNLmgdiQGlBq\n" +
                 "MGlBoCxKDQDTAaM0xWH5ozTc0maAHg08GowaUGgB+e9KKaDSg0XJsOzQaTPFLmquFgo60maTNFwH\n" +
@@ -580,8 +582,8 @@ public class ImageBase64Utils {
                 "3YYHNSoQRUW0EAHsKfGRtyOfSuWojJjyOOab3p/XkU0jmsEJCg81Oh4qvUydKUhSLaHdCQKbH/rC\n" +
                 "P0pYGwCD3pgbbJnrWNtzntuidjzx6ZpFYsQCMCnggoCKQDnPWoMyC5b5iMdOKpMeTU87liTmqjnB\n" +
                 "rogtDqpR0I5WG05NZ0o3Z7VdlYHPpVJz8xrspKxpIgBKYH51ft59wGTyKoEbs+gpI5fLauiwoS11\n" +
-                "N5Xz3qQc1Qgk3gHNXUOQBQXONh2QOBTgfnyRwKb93mnA89KZmwf5mpy/LgnrTGJPQdaQkjrVCt0G\n" +
-                "XcwAwKwb2bANaF3Lyeaw7mQsxpxV2b/w6ZCCWYnrTiCQe2aEUkZ9ae55wK1OGQIAABU0Z5yPwqEH\n" +
+                "N5Xz3qQc1Qgk3gHNXUOQBQXONh2QOBTgfnyRwKb93mnA89KZmwf5mpy/LgnrTGJPQdaQkjrVCt0G\n");
+                base64.append("XcwAwKwb2bANaF3Lyeaw7mQsxpxV2b/w6ZCCWYnrTiCQe2aEUkZ9ae55wK1OGQIAABU0Z5yPwqEH\n" +
                 "oMVaiQHB/KhmbLMQAAJ61bjOFYnjAJqvEgzViUhLVyOuMVy1HqZydlc5y+ctITnOTWa4yavXJyxz\n" +
                 "61TIyxrtpqyPkcXLmm2RmkNOxQRW1zkG4oxTiKSmSNxRinYoNAiM0U4immmIaR2ppp5FNNMBKSlo\n" +
                 "pgNNN708ikpiG4pCKdjNGKYDaKU000yQooxRTAKSlooASjrR2ooEJRS0lACUlOpKYCUUtJigQlFL\n" +
@@ -741,7 +743,8 @@ public class ImageBase64Utils {
                 "LmikooAUUopBRmgBaKKMigAoopM0ALSZpaTNAAelNNKTTkjLGrQ4wcnZEYQk5xxVq3iIIY8DrUsd\n" +
                 "sSAWH0FMuJ1VfKT/AIER3raKuethsKo+9I0dOl3XAIPArRu5cnHY1jabkNmtOU71zXNKXvnrzpJw\n" +
                 "MK9XZcnsCM/jUFaeoW5eHzAOV5P0rLBrVO6PlsVS9nVaHUUgNFM5haKSigY7NANJRmgQuaSij6UC\n" +
-                "CiikoGFFFFACZozRmkzQA6kzSZpc0DClpKKAFpM0ZozSAWkpKQmgAooopAFFFIetABSE0Z5pDTEx\n" +
+                "CiikoGFFFFACZozRmkzQA6kzSZpc0DClpKKAFpM0ZozSAWkpKQmgAooopAFFFIetABSE0Z5pDTEx\n");
+                base64.append(
                 "DQDQTzigH86YhQaWm5p2aQxaSlpDQMQ9aTrSnNH86AExxQaXqaQ0XAKKMUtFwEpKWkoGGKWj+dAp\n" +
                 "AApcUUtACdKWjFGKQCEUhBp2M0hBFAxmOaUUtJUFIQgUhFONNNBQlB4paDQAlFFL6UAJSYp1GKAE\n" +
                 "AoAp1JjvQFgApQKKcBSGIBzUgFIBzUgFS2WkCipABikAp4FQy0gHanikANOAqLlJBjinYoFKBSuX\n" +
@@ -904,7 +907,8 @@ public class ImageBase64Utils {
                 "QBml6nApwFbnJYFX2qQLnjtSAdvWp0TGDWc52O7D0eZgq4pHPYU9iFXFREknNc17u57lOmooYRSY\n" +
                 "pxoxTNGMA+YU2fjFSAfOKZc4GK1pfEeZjvgZCDxS5pBS5rc8QKKKKACkNLQaQCUUEUUwE5opaKAE\n" +
                 "oFLRSGAo/ClooASilpKAFFPBpgpQaQyYHmnfSowaeDxUFIXPFJS5PFJSKFoP1oooGFKKSlFJjFpK\n" +
-                "WkNIdhppD0pTSGkAlKelJSnGKRaQ0/pRRRQMKQ0ppvegBwFOFNFPApMocOf8aB+lKBxS/pUjAf8A\n" +
+                "WkNIdhppD0pTSGkAlKelJSnGKRaQ0/pRRRQMKQ0ppvegBwFOFNFPApMocOf8aB+lKBxS/pUjAf8A\n");
+                base64.append(
                 "6qUfT8aBSgGkUgoxxSgUuKQwAp46UwCpAKTKExzTwBTRThipGOH508UwU8YxUstDxTgOKaCKcKhl\n" +
                 "DhSgUgpR7VJQtKP5UnWlxQMBSikHSlFJlDhSikFPAqWNDwKkFRrUgNSMcKcKaKUUikL+NKKBRnmk\n" +
                 "UV9Rg+0WMqjkgbh+Fed3sRSU16aADweh4rhNZt/KuZEx91iK9LLqlpOJw46F4qRgEHdQAac4wfpR\n" +
@@ -1051,7 +1055,8 @@ public class ImageBase64Utils {
                 "KnmpRUM0Q/8ApS9aAeB2oFQUFKBzSdqXikAY496OtLQBQMAKUDFAHX+VKAM0hhjijFKBRikAmKMf\n" +
                 "nTsUYouMbikIpxHFIRQA3HfFIRTiDSEUxDCKTA5pxAppqhMaRSGnEU08VRAxh681GQKlNRkD6+1W\n" +
                 "iWREVE4qcioXHFaRM2TgU4CgU8CkcwAU4CgCnAUgAClFLijFACgZ6U8CkAxTxUsYopwpopwNIBRS\n" +
-                "0ClxQAfzopaQigBPpSYxSmjpQA3FGKdSYoATFGKcBRikMSkxTqCKQxuKDS4pMUDEopcUUhoKcM0l\n" +
+                "0ClxQAfzopaQigBPpSYxSmjpQA3FGKdSYoATFGKcBRikMSkxTqCKQxuKDS4pMUDEopcUUhoKcM0l\n" );
+                base64.append(
                 "KKkpCing0wdaeOKllCil460maUVIABR3paKBjccUcUvrRigY0igUEUCgBaAeKKBzQMcBS0go7UgA\n" +
                 "+uKBQckc0ADFAxRThTRThUjHCnCkFKBSYxwp49aYKeKQx4FOFNFKPWkMdQaKKBAKKKKAEpDS00k0\n" +
                 "xB3pDTqT8KoBOOlJil70H1piGmkpTSGmJjT60qHmkNCmiwRepp2p/dnPIwaaKS1PyH6GkFcMl7zP\n" +
@@ -1213,7 +1218,8 @@ public class ImageBase64Utils {
                 "ybjgakWoQealTrSKTJ0NXbZsEA1RBq1AfmFZzV0WmbkLcA1ZDALVG3b5RVh3whzXBJGiKVy+6U1A\n" +
                 "e9K5Jcn3pjHimkdS2IGPz05TzTHPz05OtaPYxT1L0XER96zbk7pz7cVo52wjPpmslzukJ9TToLVs\n" +
                 "8vMp7RGmig0V0nkXEooooC4UtJRQO4tJniijNIYZoopCaAA0lFITQAhpppTSUABNMNONJzTATp9a\n" +
-                "T+lKabVAL3oz3pKKAFooozQA6ikozSAeDTgajBpwNIY8GnZwfamA0vWhEtDjxz2NOU0wHjBpRkGr\n" +
+                "T+lKabVAL3oz3pKKAFooozQA6ikozSAeDTgajBpwNIY8GnZwfamA0vWhEtDjxz2NOU0wHjBpRkGr\n" );
+                base64.append(
                 "Ri1YnByMUh96YDT8hh70mioyGkUdKUc8UhrFqx0wdxQadTRxSipZshaWkopFC0UmaKBoUGlHFJRm\n" +
                 "kA7NAP8A+qm5/GlzzQMdxS5xx2puR3pelIY719aQ+4xQDn6U0n160DuO4+vvQDSZ96MmgY4H3pQR\n" +
                 "68UzJz/KlzRYZKDz608VCD/9eng+9Q0USZ44pcnOaYDkY6YpQcilYq47P4UoIpmR17mlzx70ihwO\n" +
@@ -1478,7 +1484,8 @@ public class ImageBase64Utils {
                 "SE0ZpM0xCk00mgmkzQIWkpDQTTAM000E0GmAmaM0maQ0ybgaKCaTNAATTSaCaSmAhpKDSE0wCikz\n" +
                 "RmgApM0ZozTGGaCaQ0maBi0maTNLQAmaM0ZpCaAFzSUmaAaYCmgGmmlFAiQGpAahBqUGkIlBpc00\n" +
                 "dKWpHcdRmmilBoGLmkNLTT0qbDGmmmnGmE0x3EJpARQTTc1Q7jwaAeabmlBpDHZpc0zNLmgB4NTx\n" +
-                "v0qsDUimpaHc0In5FWG5XI7VRifirUb5GKzasN6oceRUbAU8cNj8qRhVJmEkQHg59KY43DIqRxTM\n" +
+                "v0qsDUimpaHc0In5FWG5XI7VRifirUb5GKzasN6oceRUbAU8cNj8qRhVJmEkQHg59KY43DIqRxTM\n" );
+                base64.append(
                 "gqRVscWVz6UhpzjBphNSbJhRmkzRmgq4uaM0maM0guLmjNJmjNFguOzSZpM0ZosFxc0maTNBNOwC\n" +
                 "5ozxTc0uaLBcXNBNNJpM0WAXNIT1oJpCadgFBxTgewqPNOBoGPBp4NRAinZqSkyQUoNMBpc0rFXH\n" +
                 "g0ufamA0oNTYdx4NKcCmA0A0WHcfnNAPP8qZmnZH9aVh3FzSkimg9aAaLAOB4pGOcZ96bmkJ+UfW\n" +

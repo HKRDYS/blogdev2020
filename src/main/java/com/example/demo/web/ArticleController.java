@@ -33,7 +33,7 @@ public class ArticleController {
     @Autowired
     private IUserMapper iUserMapper;
     @Autowired
-    private IArticleService iArticleService;
+    private ArticleServiceImpl iArticleService;
     @Autowired
     private ITypeService iTypeService;
 

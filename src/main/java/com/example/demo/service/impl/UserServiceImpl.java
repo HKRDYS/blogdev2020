@@ -25,6 +25,7 @@ public class UserServiceImpl implements IUserService {
     private RedisTemplate redisTemplate;//注入redis接口做数据缓存
     @Override
     public User findByLoginName(String loginName) {
+        System.err.println(loginName);
         Object obj = redisTemplate.opsForValue().get(loginName);
         if (obj != null){
             return (User) obj;

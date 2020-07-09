@@ -5,11 +5,13 @@ import com.example.demo.model.entity.Role;
 import com.example.demo.model.entity.User;
 import com.example.demo.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @Service
 @Transactional
 //角色管理服务实现类

@@ -35,6 +35,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/myLogin")
                 .defaultSuccessUrl("/myLogin")
                 .failureUrl(("/toLogin?error"));
+        http.logout().logoutSuccessUrl("/");
 
     }
     //重写以下方法，选择授权认证方法，内存身份认证，JDBC认证还是UserDetails认证

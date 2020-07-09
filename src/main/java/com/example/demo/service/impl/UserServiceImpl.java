@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 * User服务接口实现类
 * */
 //添加事务控制
-@Primary
 @Transactional
 @Service
 public class UserServiceImpl implements IUserService {
@@ -51,7 +50,7 @@ public class UserServiceImpl implements IUserService {
             if (list != null && list.size() > 0){
                 redisTemplate.opsForValue().set("allUser",list);
             }
-            return null;
+            return list;
         }
 
     }
@@ -71,7 +70,6 @@ public class UserServiceImpl implements IUserService {
                 for (User u : list){
                     if (u.getLoginName().equals(user.getLoginName())){
                         list.remove(u);
-                        return  delUser(user);
                     }
                 }
                 //改用lambda表达式来做

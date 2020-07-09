@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
     <head th:fragment="header">
-        <title>头部内容</title>
+        <title>后台页面</title>
         <meta charset="utf-8">
         <title>Realm - Dashboard</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,6 +44,10 @@
                 class_name: 'my-sticky-class'
             });
         </script>
+        <style>
+            .li-inline{display:inline;}
+            .star{color:red;}
+        </style>
     </head>
     <body></body>
 </html>

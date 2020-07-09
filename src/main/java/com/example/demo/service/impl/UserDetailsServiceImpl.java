@@ -1,7 +1,5 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.dao.IRoleMapper;
-import com.example.demo.dao.IUserMapper;
 import com.example.demo.model.entity.Role;
 import com.example.demo.model.entity.User;
 import com.example.demo.service.IRoleService;
@@ -23,14 +21,14 @@ import java.util.stream.Collectors;
 @Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
-    private IUserMapper iUserMapper;//注入用户服务接口
+    private IUserService iUserService;//注入用户服务接口
     @Autowired
-    private IRoleMapper iRoleMapper;//注入角色服务接口
+    private IRoleService iRoleService;//注入角色服务接口
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        User user = iUserMapper.findByLoginName(s);//根据登录名查用户信息
+        User user = iUserService.findByLoginName(s);//根据登录名查用户信息
         if (user != null){
-            List<Role> list = iRoleMapper.findRoleByLoginUser(user);//根据用户查角色
+            List<Role> list = iRoleService.findRoleByLoginUser(user);//根据用户查角色
             StringBuilder roles = new StringBuilder();//用于保存角色名
             for (Role r: list){
                 roles.append(r.getRole());

@@ -48,11 +48,5 @@ public interface IUserMapper {
     public List<User> findUser(User user);//多条件查找用户
     public int addUser(User user);//添加用户，注册用户
 
-    @Select("select id from t_user where login_name = #{loginName}")
-    public int findIdByLoginName(User user); //根据用户登录名查找用户ID
-
-    @Select("select login_name from t_user where id = #{id}")
-    public String findLoginNameById(User user);
-
 
 }

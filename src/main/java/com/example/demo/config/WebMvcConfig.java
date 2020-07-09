@@ -23,7 +23,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
         registry.addViewController("/guest/about").setViewName("/guest/about");
         registry.addViewController("/guest/contact").setViewName("/guest/contact");
         //registry.addViewController("/user/toPublishArticle").setViewName("/article/publishArticle");
-        registry.addViewController("/admin/toAuditArticle").setViewName("/article/auditArticle");
+        //registry.addViewController("/admin/toAuditArticle").setViewName("/article/auditArticle");
         registry.addViewController("/user/toModifyArticle").setViewName("/article/modifyArticle");
         registry.addViewController("/user/toDelArticle").setViewName("/article/delArticle");
         registry.addViewController("/admin/toAuditComment").setViewName("/comment/auditComment");

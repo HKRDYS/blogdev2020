@@ -18,6 +18,12 @@ public class User implements Serializable {
     private boolean valid;//有效性 0无效，1有效
     private String img;//头像
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    private String username = name;
+
     public Integer getId() {
         return id;
     }

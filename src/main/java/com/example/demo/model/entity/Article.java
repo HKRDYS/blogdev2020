@@ -3,17 +3,23 @@ package com.example.demo.model.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Article implements Serializable{
+/**
+ * 博文实体类
+ */
+public class Article implements Serializable {
     private Integer id;
     private String title;
     private String content;
-    private Type type;
+    private com.example.demo.model.entity.Type type;
     private User user;
     private Date publishTime;
     private Date modifyTime;
     private String status;
     private String enableComment;
     private String img;
+
+    public Article() {
+    }
 
     public Integer getId() {
         return id;

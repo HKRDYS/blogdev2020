@@ -1,9 +1,14 @@
 package com.example.demo.model.entity;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
 import java.io.Serializable;
 
-public class Type  implements Serializable {
-    private Integer id ;
+/**
+ * 类型实体类
+ */
+public class Type implements Serializable {
+    private Integer id;
     private String type;
 
     public Integer getId() {

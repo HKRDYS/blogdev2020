@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/*
-* 博文类型数据访问接口
-* */
+/**
+ * 博文类型数据访问接口
+ */
 @Mapper
 @Repository
 public interface ITypeMapper {

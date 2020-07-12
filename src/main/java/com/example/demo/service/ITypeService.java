@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/*
-* 博文类型服务类
-* */
+/**
+ * 博文类型服务类
+ */
 @Service
 public interface ITypeService {
     public List<Type> findType();

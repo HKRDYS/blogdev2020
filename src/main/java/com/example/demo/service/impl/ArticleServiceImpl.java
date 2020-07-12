@@ -6,17 +6,16 @@ import com.example.demo.service.IArticleService;
 import com.example.demo.util.Page;
 import com.example.demo.util.Pager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/*
-* 博文服务层接口
-* */
 
+/**
+ * 博文服务层接口实现类
+ */
 @Transactional
 @Service
 public class ArticleServiceImpl implements IArticleService {
@@ -24,21 +23,22 @@ public class ArticleServiceImpl implements IArticleService {
     private IArticleMapper iArticleMapper;//注入博文数据访问接口
     @Autowired
     private RedisTemplate redisTemplate;//注入redis接口做数据缓存
+
     @Override
     public String publishArticle(Article article) {
         boolean flag = iArticleMapper.publishArticle(article);
-        if (flag){
-            // 缓存当前博文
+        if (flag) {
+            //缓存当前博文
             List<Article> list = iArticleMapper.findArticle(article);
             //清除掉前边缓存的数据
             Object obj = redisTemplate.opsForValue().get("article_list");
-            if (obj != null){
+            if (obj != null) {
                 redisTemplate.delete("article_list");
             }
             //重新缓存数据
-            redisTemplate.opsForValue().set("article_list",list);
+            redisTemplate.opsForValue().set("article_list", list);
             return "发布成功";
-        }else {
+        } else {
             return "发布失败";
         }
     }
@@ -57,18 +57,20 @@ public class ArticleServiceImpl implements IArticleService {
         }
         return list;
     }
+
     @Override
     public List<Article> findArticle(Article article) {
         return iArticleMapper.findArticle(article);
     }
-//分页查询
+
+    //分页查询
     @Override
-    public Pager<Article> findArticlePage(Article article, Page page) {
+    public Pager findArticlePage(Article article, Page page) {
         Pager pager=new Pager();
         //查出总记录数
         Integer totalRecords = iArticleMapper.countArticle();
         //page对象永远不会为null,只能通过其属性来判断，严格讲所有属性都要判断，只处做简化处理
-        Page page1 = null;//page与page1是2个不同的对象
+        com.example.demo.util.Page page1 = null;//page与page1是2个不同的对象
         if (page.getCurrentPage() == null) {
             page1 = new Page(totalRecords, 0);
         }else{
@@ -120,7 +122,7 @@ public class ArticleServiceImpl implements IArticleService {
     }
     //审核博文
     @Override
-    public boolean auditArticle(String status, Integer id) {
+    public boolean auditArticle(String status,Integer id) {
         return iArticleMapper.auditArticle(status,id);
     }
     //查看博文

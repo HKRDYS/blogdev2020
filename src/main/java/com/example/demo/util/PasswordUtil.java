@@ -10,7 +10,7 @@ public class PasswordUtil {
         BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
         return bCryptPasswordEncoder.encode(oldPass);
     }
-    public static void main(String[] args){
+    public static void main(String args[]){
         System.out.println(enCodeByBCrypt("123456"));
     }
 }

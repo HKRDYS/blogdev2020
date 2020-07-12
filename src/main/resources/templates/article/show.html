@@ -44,31 +44,43 @@
                         <div class="entry-author-box clearfix">
                           <img th:src="@{/static/img/author.jpg}" class="author-img" alt="img">
                           <div class="author-info">
-                            <h6 class="author-name"><a href="#">最新评论人</a></h6>
-                            <p class="mb-0">评论内容.....</p>
+                            <h6 class="author-name">
+                              <a href="#" th:text="${newComment} != null and ${newComment.user} != null ?${newComment.user.name} : ''">最新评论人</a>
+                            </h6>
+                            <p class="mb-0" th:text="${newComment}!=null?${newComment.content}:''">
+                              评论内容.....
+                            </p>
+                            <p>
+                              <span th:text="${newComment} != null?${#dates.format(newComment.commentTime,'yyyy-MM-dd HH:mm:ss')} : ''">评论时间</span>
+                              <span th:text="${newComment != null ?$ {newComment.ip}:''">ip地址</span>
+                            </p>
                           </div>
                         </div>
 
                         <!-- related posts -->
+                        <!--作者相关的其他博文-->
                         <div class="related-posts mt-40">
                           <div class="heading-lines mb-30">
                             <h3 class="heading small">最新博文</h3>
                           </div>
-                          <div class="row">
+                          <div class="row" th:each="otherArticle:${otherList}">
                             <div class="col-sm-4">
                               <article class="entry-item">
                                 <div class="entry-img">
-                                  <a th:href="@{/guest/detail(title_id=1111)}">
-                                    <img th:src="@{/static/img/post_1.jpg}" alt="">
+                                  <a th:href="@{/guest/showArticle(id=${otherArticle.id})}">
+                                    <img th:src="@{otherArticle.img}" alt="无图片">
                                   </a>
                                 </div>
                                 <h4 class="entry-title">
-                                  <a href="article-detail.html">最新博文1</a>
+                                  <a th:href="@{/guest/showArticle(id=${otherArticle.id})}"
+                                    th:text="${otherArticle.title}">最新博文1</a>
                                 </h4>
+                                <p th:utext="${#strings.abbreviate(otherArticle.content,200)}"></p>
                                 <div class="entry-meta-wrap clearfix">
                                   <ul class="entry-meta">
                                     <li class="entry-date">
-                                      <a th:href="@{/guest/detail(title_id=1111)}">2020年6月30日</a>
+                                      <a href="javascript:void (0)"
+                                         th:text="${#dates.format(otherArticle.publishTime,'yyyy-MM-dd HH:mm:ss')}">2020年6月30日</a>
                                     </li>
                                   </ul>
                                 </div>
@@ -97,27 +109,31 @@
                           </div>
                         </div>
                         <!-- Comments -->
+                        <!--博文所有的评论-->
                         <div class="entry-comments mt-20">
                           <div class="heading-lines mb-30">
-                            <h3 class="heading small">评论（3）</h3>
+                            <h3 class="heading small">评论（3）
+                              <b th:text="${#lists.size(commentList)}"></b>
+                            </h3>
                           </div>
-                          <ul class="comment-list">
+                          <ul class="comment-list" th:each="comment:${commentList}">
                             <li>
                               <div class="comment-body">
-                                <img th:src="@{/static/img/comment_1.jpg}" class="comment-avatar" alt="">
+                                <img th:src="@{/static/img/comment_1.jpg}" class="comment-avatar" alt="用户头像">
                                 <div class="comment-content">
-                                  <span class="comment-author">评论作者1</span>
-                                  <span class="comment-date">2020年6月30日 12:45:50</span>
-                                  <p>评论内容</p>
+                                  <span class="comment-author" th:text="${comment.user.name}">评论作者1</span>
+                                  <span class="comment-date"
+                                    th:text="${#dates.format(comment.commentTime,'yyyy-MM-dd HH:mm:ss')}">2020年6月30日 12:45:50</span>
+                                  <p th:text="${comment.content}">评论内容</p>
                                 </div>
                               </div>
 
                               <ul class="comment-reply">
                                 <li>
                                   <div class="comment-body">
-                                    <img th:src="@{/static/img/comment_2.jpg}" class="comment-avatar" alt="">
+                                    <img th:src="@{/static/img/comment_2.jpg}" class="comment-avatar" alt="用户头像">
                                     <div class="comment-content">
-                                      <span class="comment-author">评论作者2</span>
+                                      <span class="comment-author" >评论作者2</span>
                                       <span class="comment-date">2020年6月30日 12:55:50</span>
                                       <p>评论内容</p>
                                     </div>
@@ -142,7 +158,8 @@
                           <div class="heading-lines mb-30">
                             <h3 class="heading small">我要评论</h3>
                           </div>
-                          <form id="form" method="post" action="#">
+                          <form id="form" method="get" th:action="${/user/comment}">
+                            <input th:type="hidden" name="articleId" id="articleId" th:value="${article.id}">
                             <div class="row row-16">
                               <div class="col-md-12">
                                 <textarea name="comment" id="comment" placeholder="请输入评论内容" rows="8"></textarea>

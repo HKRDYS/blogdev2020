@@ -48,7 +48,7 @@
                                             <div th:if="${article.enableComment} == -1 ">禁止评论</div>
                                         </td>
                                         <td>
-                                            <a class="btn btn-primary" th:href="@{/admin/showArticle(id=${article.id})}">查看</a>
+                                            <a class="btn btn-primary" th:href="@{/guest/showArticle(id=${article.id})}">查看</a>
                                             <a class="btn btn-primary"  th:href="@{/admin/auditArticle(status='1',id=${article.id})}" th:if="${article.status}==0 ">通过</a>
                                             <a class="btn btn-primary" th:href="@{/admin/auditArticle(status='-1',id=${article.id})}"  th:if="${article.status}==0 ">拒绝</a>
                                         </td>

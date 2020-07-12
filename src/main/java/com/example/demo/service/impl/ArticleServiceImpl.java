@@ -130,4 +130,9 @@ public class ArticleServiceImpl implements IArticleService {
     public Article findArticleById(Integer id) {
         return iArticleMapper.findArticleById(id);
     }
+
+    @Override
+    public List<Article> findNewTop10() {
+        return iArticleMapper.findNewTop10();
+    }
 }

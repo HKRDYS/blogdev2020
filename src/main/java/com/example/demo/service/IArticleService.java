@@ -29,4 +29,6 @@ public interface IArticleService {
     boolean auditArticle(String status, Integer id);
     //查看博文
     Article findArticleById(Integer id);
+    //查找最新审核通过的10篇博文
+    List<Article> findNewTop10();
 }

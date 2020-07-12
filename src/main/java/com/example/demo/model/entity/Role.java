@@ -2,7 +2,9 @@ package com.example.demo.model.entity;
 
 import java.io.Serializable;
 
-//角色实体类
+/**
+ * 角色实体类
+ */
 public class Role implements Serializable {
     private Integer id;//主键
     private String role;//角色名
@@ -31,3 +33,4 @@ public class Role implements Serializable {
                 '}';
     }
 }
+

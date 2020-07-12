@@ -4,9 +4,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import java.io.Serializable;
 
-/*
-* 分页工具
-* */
+/**
+ * 分页工具
+ *
+ */
 @Component
 public class Page implements Serializable {
     //静态变量不能直接注入值,可以通过非静态方法注入值

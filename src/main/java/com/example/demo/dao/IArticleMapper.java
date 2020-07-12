@@ -5,9 +5,10 @@ import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-/*
-* 博文数据访问接口
-* */
+
+/**
+ * 博文数据访问接口
+ */
 @Mapper
 @Repository
 public interface IArticleMapper {
@@ -29,7 +30,7 @@ public interface IArticleMapper {
     Integer delArticle(Integer id);
     //审核博文
     @Update("update t_article set status=#{status} where id=#{id}")
-    boolean auditArticle(@Param("status") String status,@Param("id") Integer id);
+    boolean auditArticle(@Param("status") String status, @Param("id") Integer id);
     //查看博文
     //比较复杂，需要关联查询类型和用户信息，所以只能到mapper.xml文件中去写查询
     Article findArticleById(Integer id);

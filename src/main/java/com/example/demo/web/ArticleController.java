@@ -3,9 +3,11 @@ package com.example.demo.web;
 import com.alibaba.fastjson.JSONObject;
 import com.example.demo.dao.IUserMapper;
 import com.example.demo.model.entity.Article;
+import com.example.demo.model.entity.Comment;
 import com.example.demo.model.entity.Type;
 import com.example.demo.model.entity.User;
 import com.example.demo.service.IArticleService;
+import com.example.demo.service.ICommentService;
 import com.example.demo.service.ITypeService;
 import com.example.demo.util.ImageBase64Utils;
 import com.example.demo.util.Page;
@@ -36,6 +38,8 @@ public class ArticleController {
     private IUserMapper iUserMapper;
     @Autowired
     private IArticleService iArticleService;
+    @Autowired
+    private ICommentService iCommentService;
     @Qualifier("typeServiceImpl")
     @Autowired
     private ITypeService iTypeService;
@@ -260,12 +264,60 @@ public class ArticleController {
     }
     //查看博文
     @RolesAllowed("ROLE_ADMIN")
-    @RequestMapping("/admin/showArticle")
+    @RequestMapping("/guest/showArticle")
     public String showArticle(HttpServletRequest request,Integer id){
         Article article=iArticleService.findArticleById(id);
         //处理一下图片
         article.setImg("data:image/jpg;base64," + article.getImg());
         request.setAttribute("article",article);
+        //把对应博文的评论信息一并查出来
+        List<Comment> commentList =  iCommentService.findCommentByArticleId(article.getId());
+        //取出第一条评论单独处理
+        Comment comment = new Comment();
+        if (commentList != null && commentList.size() > 0){
+            commentList.get(0);
+            request.setAttribute("newComment",comment);//最新的评论
+            commentList.remove(0);
+        }
+        request.setAttribute("commentList",commentList);
+        //查出作者相关的其他博文
+        Article article1 = new Article();//注意article和article1是两个不同的变量
+        article1.setUser(article.getUser());
+        List<Article> otherList = iArticleService.findArticle(article1);
+        //从otherList 中过滤掉当前查出的文章
+        int index = 1;
+        if (otherList != null && otherList.size() > 0){
+            for (int i=0;i<otherList.size();i++){
+                if (otherList.get(i).getId().equals(article.getId())){
+                    index=i;
+                }
+                //此处都是article2
+                Article article2 = otherList.get(i);
+                article2.setImg("data:image/jpg;base64,"+article2.getImg());
+                otherList.set(i,article2);
+            }
+        }
+        if (index != -1){
+            otherList.remove(index);
+        }
+        request.setAttribute("otherList",otherList);
         return "article/show";
+    }
+    //映射到首页
+    @RequestMapping("/")
+    public String frontHome(HttpServletRequest request){
+        List<Article> list = iArticleService.findNewTop10();
+        if (list !=null && list.size() > 0){
+            for (int i=0;i < list.size();i++){
+                Article a = list.get(i);
+                a.setImg("data:image/jpg;base64," + a.getImg());
+                list.set(i,a);//修改一个图片内容
+            }
+        }
+        //单独取出第一篇
+        request.setAttribute("newArticle",list.get(0));
+        list.remove(0);
+        request.setAttribute("newTop10",list);
+        return "guest/index";
     }
 }

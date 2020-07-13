@@ -8,6 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class UserController {
     private IUserMapper iUserMapper;
 
     @RequestMapping("/myLogin")
-    public String myLogin(HttpServletRequest request) {
+    public ModelAndView myLogin(HttpServletRequest request) {
         System.out.println("登陆成功");
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         System.out.println(userDetails.getUsername());
@@ -40,9 +41,11 @@ public class UserController {
             System.out.println(grantedAuthority.getAuthority());
         }
         if (list != null && list.contains("ROLE_ADMIN")) {
-            return "/admin/home";
+//            return "/admin/home";
+            return new ModelAndView("forward:/user/home");//转身后面页面映射路径"/user/home"
         } else {
-            return "/guest/index";
+//            return "/guest/index";
+            return new ModelAndView("forward:/");//转向首页映射的路径"/"
         }
     }
     //用户个人信息,用户和管理员使用一个后台，不分开做，在页面中做权限控制

@@ -34,4 +34,7 @@ public interface IArticleMapper {
     //查看博文
     //比较复杂，需要关联查询类型和用户信息，所以只能到mapper.xml文件中去写查询
     Article findArticleById(Integer id);
+    //查找最新审核通过的10篇博文
+    //@Select("select * from t_article where status = "1" order by publish_time desc limit 0,10)
+    List<Article> findNewTop10();
 }

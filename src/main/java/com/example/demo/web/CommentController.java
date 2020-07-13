@@ -71,4 +71,12 @@ public class CommentController  {
         request.setAttribute("auditMsg",auditMsg);
         return new ModelAndView("forward:/admin/toAuditComment");//再转回评论列表页面
     }
+    //删除评论
+    @RequestMapping("/admin/delComment")
+    public ModelAndView delComment(Integer id,HttpServletRequest request){
+        boolean flag = iCommentService.delComment(id);
+        String delMsg = flag ? "删除成功" : "删除失败";
+        request.setAttribute("delMsg",delMsg);
+        return new ModelAndView("forward:/admin/toAuditComment");
+    }
 }

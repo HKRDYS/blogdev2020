@@ -38,11 +38,12 @@ public class ArticleController {
     private IUserMapper iUserMapper;
     @Autowired
     private IArticleService iArticleService;
-    @Autowired
-    private ICommentService iCommentService;
+
     @Qualifier("typeServiceImpl")
     @Autowired
     private ITypeService iTypeService;
+    @Autowired
+    private ICommentService iCommentService;
 
     @RequestMapping("/guest/detail")
     public String detail(String article_id) {

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<head th:include="/admin/header :: header"></head>
+<head th:include="admin/header :: header"></head>
 <body>
 <div id="wrap">
     <!--导航栏-->
@@ -48,7 +48,7 @@
                                             <div th:if="${article.enableComment} == -1 ">禁止评论</div>
                                         </td>
                                         <td>
-                                            <a class="btn btn-primary" th:href="@{/guest/showArticle(id=${article.id})}">查看</a>
+                                            <a class="btn btn-primary" th:href="@{/guest/showArticle(id=${article.id})}">查看博文</a>
                                             <a class="btn btn-primary"  th:href="@{/admin/auditArticle(status='1',id=${article.id})}" th:if="${article.status}==0 ">通过</a>
                                             <a class="btn btn-primary" th:href="@{/admin/auditArticle(status='-1',id=${article.id})}"  th:if="${article.status}==0 ">拒绝</a>
                                         </td>
@@ -73,14 +73,14 @@
         var curNum = $("#currentPage").val();
         $("#prePage").click(function () {
             //防误点击
-            if ($(this).attr("class").indexOf("disabled") != -1) {
+            if ($(this).attr("class").indexOf("disabled") !== -1) {
                 return false;
             }
             $("#pageForm").attr("action", "/admin/toAuditArticle?requestPage=" + (--curNum)).submit();
         });
         $("#nextPage").click(function () {
             //防误点击
-            if ($(this).attr("class").indexOf("disabled") != -1) {
+            if ($(this).attr("class").indexOf("disabled") !== -1) {
                 return false;
             }
             $("#pageForm").attr("action", "/admin/toAuditArticle?requestPage=" + (++curNum)).submit();

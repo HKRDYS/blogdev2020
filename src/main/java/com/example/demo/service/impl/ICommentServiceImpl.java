@@ -20,7 +20,7 @@ public class ICommentServiceImpl implements ICommentService {
     //只查审核通过的评论
     @Override
     public List<Comment> findCommentByArticleId(Integer articleId) {
-        return iCommentMapper.findAllCommentByArticleId(articleId);
+        return iCommentMapper.findCommentByArticleId(articleId);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class ICommentServiceImpl implements ICommentService {
 //查全部评论
     @Override
     public List<Comment> findAllCommentByArticleId(Integer articleId) {
-        return iCommentMapper.findAllCommentByArticleId(articleId);
+        return iCommentMapper.findCommentByArticleId(articleId);
     }
 //分页查找
     @Override

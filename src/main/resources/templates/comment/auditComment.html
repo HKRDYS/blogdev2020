@@ -14,13 +14,75 @@
             <div class="row-fluid">
                 <div class="overview_boxes">
                     <div class="box_row clearfix">
-                        审核评论
+                        <table class="table table-responsive  table-striped table-hover">
+                            <caption th:text="${auditMsg}" class="text-success"></caption>
+                            <tr>
+                                <th>序号</th>
+                                <th>ID</th>
+                                <th>文章标题</th>
+                                <th>评论内容</th>
+                                <th>评论时间</th>
+                                <th>评论ip</th>
+                                <th>评论人</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                            <div id="mytable">
+                                <div th:each="comment:${pager.list}">
+                                    <tr>
+                                        <td th:text="${commentStat.index}+1"></td>
+                                        <td th:text="${comment.id}"></td>
+                                        <td th:text="${comment.article.title}"></td>
+                                        <td th:text="${comment.content}"></td>
+                                        <td th:text="${#dates.format(comment.commentTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                                        <td th:text="${comment.ip}"></td>
+                                        <td th:text="${comment.user.name}"></td>
+                                        <td>
+                                            <div th:if="${comment.status} == 0 ">未审核</div>
+                                            <div th:if="${comment.status} == 1 " class="text-success">审核通过</div>
+                                            <div th:if="${comment.status} == -1 " class="text-error">审核拒绝</div>
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-primary" th:href="@{/admin/toAuditComment(id=${comment.id})}">查看</a>
+                                            <a class="btn btn-primary"  th:href="@{/admin/auditComment(status='1',id=${comment.id})}" th:if="${comment.status}==0 ">通过</a>
+                                            <a class="btn btn-primary" th:href="@{/admin/auditComment(status='-1',id=${comment.id})}" th:if="${comment.status}==0 ">拒绝</a>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div th:include="admin/middle :: middle" id="backmiddle"></div>
     </div>
+    <hr style="border-top-width: 1.5px;border-top-color: green"/>
+    <div style="display:block;width:50%;clear: both;text-align: center;margin:auto;"
+         th:include="/admin/page :: page"></div>
 </div>
+</div>
+<script>
+    //处理翻页
+    //发送post请求，必须携带"[[${_csrf.parameterName}]]": "[[${_csrf.token}]]"，否则只能发送get请求
+    $().ready(function () {
+        var curNum = $("#currentPage").val();
+        $("#prePage").click(function () {
+            //防误点击
+            if ($(this).attr("class").indexOf("disabled") != -1) {
+                return false;
+            }
+            $("#pageForm").attr("action", "/admin/toAuditComment?requestPage=" + (--curNum)).submit();
+        });
+        $("#nextPage").click(function () {
+            //防误点击
+            if ($(this).attr("class").indexOf("disabled") != -1) {
+                return false;
+            }
+            $("#pageForm").attr("action", "/admin/toAuditComment?requestPage=" + (++curNum)).submit();
+
+        });
+    });
+</script>
 </body>
 </html>
+

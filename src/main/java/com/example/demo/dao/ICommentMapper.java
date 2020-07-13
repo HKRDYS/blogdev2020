@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface ICommentMapper {
     //根据文章id查评论，只查审核通过了的评论
-    List<Comment> findCommentByArticle(Integer articleId);
+    List<Comment> findCommentByArticleId(Integer articleId);
     //根据评论id查评论
     Comment  findCommentByCommentId(Integer commentId);
     //添加评论

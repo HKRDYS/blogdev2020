@@ -61,7 +61,7 @@ public class CommentController  {
         return "/comment/auditComment";
     }
     //审核评论
-    @RequestMapping("/admin/toAuditComment")
+    @RequestMapping("/admin/auditComment")
     public ModelAndView auditComment(String status,Integer id , HttpServletRequest request ){
         Comment comment = new Comment();
         comment.setStatus(status);

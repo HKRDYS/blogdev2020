@@ -89,7 +89,7 @@ public class ImageBase64Utils {
         //本地路径测试
         //System.out.println(encodeImgageToBase64(new File("C:\\Windows\\Web\\Wallpaper\\Theme2\\img10.jpg"),"jpg"));
         //测试base654编码转换成图片文件
-        StringBuffer base64=new StringBuffer();
+        StringBuilder base64=new StringBuilder();
         base64.append("/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0a\n" +
                 "HBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIy\n" +
                 "MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCASwB4ADASIA\n" +
